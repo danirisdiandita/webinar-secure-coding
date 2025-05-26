@@ -2,6 +2,7 @@
 import { create } from 'zustand';
 
 export interface Note {
+    id?: number;
     title: string;
     description: string;
     content?: string;

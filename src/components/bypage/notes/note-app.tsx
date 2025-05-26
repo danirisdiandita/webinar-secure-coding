@@ -1,11 +1,10 @@
 "use client";
 
-import { Plus, FileText } from "lucide-react";
+import { FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AddNoteModal } from "@/components/generic/note-modal";
 import { useNote } from "@/hooks/useNote";
-import { useEffect } from "react";
 
 export function NotesApp() {
 

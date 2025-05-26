@@ -34,5 +34,23 @@ export const useNote = () => {
     }
   };
 
-  return { notes, error, isLoading, createNote };
+
+  const updateNote = async (note: Note, id: number) => {
+    try {
+      const res = await fetch(`/api/note/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(note),
+      });
+      if (res.ok) {
+        mutate();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return { notes, error, isLoading, createNote, updateNote };
 };
