@@ -19,15 +19,18 @@ export const GET = async (req: Request, { params }: { params: Promise<{ id: stri
         return new Response(JSON.stringify({ message: "User not found" }), { status: 404 })
     }
 
+
+    // TODO 1 - FIXING BROKEN ACCESS CONTROL 
+
     const note_ = await prisma.note.findFirst({
         where: {
-            id: Number(id),
-            user_id: user_.id
+            id: Number(id)
         },
         select: {
             id: true,
             title: true,
             description: true,
+            content: true,
             created_at: true,
             updated_at: true,
         }

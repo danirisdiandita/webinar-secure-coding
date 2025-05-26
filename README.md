@@ -32,6 +32,15 @@ A10:2021 - Server-Side Request Forgery (SSRF) * *(New)*
 
 Kerusakan kontrol akses adalah masalah saat aplikasi tidak bisa mengatur dengan baik apa yang boleh dan tidak boleh dilakukan oleh pengguna yang sudah masuk. Misalnya: user A bisa melihat data user B.
 
+
+TODO: 
+- [ ] Buat dua akun user Fatah dan Dani dengan email fatah@example.com dan dani@example.com dengan password 12345678 
+- [ ] Login sebagai user Fatah dan buat satu note 
+- [ ] Login sebagai user Dani dan lihat note user Fatah 
+- [ ] Login sebagai user Fatah dan lihat note user Dani 
+- [ ] Lakukan secure coding dengan memperbaiki security bug yang ada 
+
+
 # Demo 2 - A02:2021 - Cryptographic Failures
 
 Kekurangan enkripsi adalah masalah saat aplikasi tidak menggunakan enkripsi yang aman untuk data sensitif. Misalnya: password yang disimpan di database tidak dienkripsi.

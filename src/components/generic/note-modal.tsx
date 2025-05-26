@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -12,37 +12,45 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Plus } from "lucide-react"
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Plus } from "lucide-react";
+import { useNote } from "@/hooks/useNote";
 
 export function AddNoteModal() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
     description: "",
     content: "",
-  })
+  });
+
+  const { createNote } = useNote();
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    // Here you would typically save the note data
-    console.log("Note data:", formData)
+    const notePayload = {
+      title: formData.title,
+      description: formData.description,
+      content: formData.content,
+    };
+
+    createNote(notePayload);
 
     // Reset form and close modal
-    setFormData({ title: "", description: "", content: "" })
-    setOpen(false)
-  }
+    setFormData({ title: "", description: "", content: "" });
+    setOpen(false);
+  };
 
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({
       ...prev,
       [field]: value,
-    }))
-  }
+    }));
+  };
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -56,7 +64,8 @@ export function AddNoteModal() {
         <DialogHeader>
           <DialogTitle>Add New Note</DialogTitle>
           <DialogDescription>
-            Create a new note with a title, description, and content. Click save when you're done.
+            Create a new note with a title, description, and content. Click save
+            when you're done.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit}>
@@ -77,7 +86,9 @@ export function AddNoteModal() {
                 id="description"
                 placeholder="Enter a brief description..."
                 value={formData.description}
-                onChange={(e) => handleInputChange("description", e.target.value)}
+                onChange={(e) =>
+                  handleInputChange("description", e.target.value)
+                }
                 rows={3}
               />
             </div>
@@ -95,7 +106,11 @@ export function AddNoteModal() {
             </div>
           </div>
           <DialogFooter>
-            <Button type="button" variant="outline" onClick={() => setOpen(false)}>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => setOpen(false)}
+            >
               Cancel
             </Button>
             <Button type="submit">Save Note</Button>
@@ -103,5 +118,5 @@ export function AddNoteModal() {
         </form>
       </DialogContent>
     </Dialog>
-  )
+  );
 }
