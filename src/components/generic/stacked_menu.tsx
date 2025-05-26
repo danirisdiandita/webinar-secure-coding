@@ -2,14 +2,13 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { useState, useRef, useEffect } from "react";
-import { LayoutDashboardIcon, SettingsIcon } from "lucide-react";
+import { LayoutDashboardIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const tabs = [
   { label: "Dashboard", href: "/dashboard", icon: <LayoutDashboardIcon /> },
-  { label: "Settings", href: "/profile", icon: <SettingsIcon /> },
 ];
 
 export default function StackedMenu() {

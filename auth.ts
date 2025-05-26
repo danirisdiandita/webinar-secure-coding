@@ -103,26 +103,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             }
         },
 
-        async redirect({ url, baseUrl }) {
+        // async redirect({ url, baseUrl }) {
+        //     return url
+        // }
+
+        async redirect({ url }) {
             return url
         }
-
-        // async redirect({ baseUrl }) {
-        //     const res = await fetch("/api/auth/checkusername", {
-        //         method: "GET",
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //             "Cache-Control": "no-cache",
-        //         },
-        //     })
-
-        //     const resJson = await res.json()
-        //     if (!resJson.user.username) {
-        //         return baseUrl + "/getting-started"
-        //     } else {
-        //         return baseUrl + "/dashboard"
-        //     }
-        // }
     },
     jwt: {
         maxAge: 24 * 60 * 60

@@ -9,7 +9,7 @@ npm run dev
 ```
 npm run build && npm start 
 ```
-# Prisma Migration (DEVELOPMENT)
+## Prisma Migration (DEVELOPMENT)
 
 ``` 
 npx prisma migrate dev
@@ -28,8 +28,14 @@ A08:2021 - Software and Data Integrity Failures *(New)*
 A09:2021 - Security Logging and Monitoring Failures *  
 A10:2021 - Server-Side Request Forgery (SSRF) * *(New)*  
 
-
 # Demo 1 - A01:2021 - Broken Access Control  
+
+Kerusakan kontrol akses adalah masalah saat aplikasi tidak bisa mengatur dengan baik apa yang boleh dan tidak boleh dilakukan oleh pengguna yang sudah masuk. Misalnya: user A bisa melihat data user B.
+
+# Demo 2 - A02:2021 - Cryptographic Failures
+
+Kekurangan enkripsi adalah masalah saat aplikasi tidak menggunakan enkripsi yang aman untuk data sensitif. Misalnya: password yang disimpan di database tidak dienkripsi.
+
 
 
 

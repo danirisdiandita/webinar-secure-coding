@@ -11,10 +11,8 @@ export const GET = async () => {
             email: session?.user?.email as string
         },
         select: {
-            username: true,
             first_name: true,
             last_name: true, 
-            image: true
         }
     });
     return new Response(JSON.stringify({ message: "Session created", user }), { status: 200 });
