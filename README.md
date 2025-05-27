@@ -28,26 +28,42 @@ A08:2021 - Software and Data Integrity Failures *(New)*
 A09:2021 - Security Logging and Monitoring Failures *  
 A10:2021 - Server-Side Request Forgery (SSRF) * *(New)*  
 
-# Demo 1 - A01:2021 - Broken Access Control  
-
-Kerusakan kontrol akses adalah masalah saat aplikasi tidak bisa mengatur dengan baik apa yang boleh dan tidak boleh dilakukan oleh pengguna yang sudah masuk. Misalnya: user A bisa melihat data user B.
-
-
-TODO: 
-- [ ] Buat dua akun user Fatah dan Dani dengan email fatah@example.com dan dani@example.com dengan password 12345678 
-- [ ] Login sebagai user Fatah dan buat satu note 
-- [ ] Login sebagai user Dani dan lihat note user Fatah 
-- [ ] Login sebagai user Fatah dan lihat note user Dani 
-- [ ] Lakukan secure coding dengan memperbaiki security bug yang ada 
-
-
-# Demo 2 - A02:2021 - Cryptographic Failures
-
-Kekurangan enkripsi adalah masalah saat aplikasi tidak menggunakan enkripsi yang aman untuk data sensitif. Misalnya: password yang disimpan di database tidak dienkripsi.
-
-- [ ] Peserta dapat melihat password yang telah di-hash di dalam database
 
 
 
+# Kegiatan 1 - Secure Coding Pada Authentikasi
+
+1. Buat dua akun email dan password, contoh:
+→ dani@widyasecurity.com - password: <diisi> (password generator)
+→ fatah@widyasecurity.com - password: <diisi> (password generator)
+2. Pengenalan best practice authentication: 
+→ Hashed password
+→ Encryption key / Kunci enkripsi
+→ use well-maintained authentication library (Open Source: Next Auth and Enterprise grade: clerk, Auth0, Firebase Authentication)
+3. Jangan percaya input user
+→ gunakan validasi pada setiap masukan user
+→ gunakan validator dengan library yang well-maintained (zod)
+
+# Kegiatan 2 - Contoh Kerentanan Sederhana
+
+TODO 1 - SQL INJECTION
+Unsafe query:  http://localhost:3000/api/note/1%20--
+TODO 2 - BROKEN ACCESS CONTROL
+Bad filter: http://localhost:3000/api/note/1
+TODO 3 - FIXING VALIDATION
+adding library zod to the database
+
+# Kegiatan 3 - Application Security Testing
+
+Contoh tools VA: 
+- VA Scanner: Zap Proxy, Burp Suite, Nessus, 
+- Chrome Extension: Retirejs 
+- All in one: Snyk 
+- Code Review: SonarQube, Coderabbit
+
+list kegiatan: 
+TODO 1 - Install Zap (Open Source VA Scanner)
+TODO 2 - Automatic Scan
+TODO 3 - Mencoba betulkan
 
 
