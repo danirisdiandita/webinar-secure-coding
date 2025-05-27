@@ -62,11 +62,13 @@ Best Practices mengacu pada OWASP Top 10
 
 # Kegiatan 2 - Contoh Kerentanan Sederhana
 
-TODO 1 - SQL INJECTION
+1. TODO 1 - SQL INJECTION
 Unsafe query:  http://localhost:3000/api/note/1%20--
-TODO 2 - BROKEN ACCESS CONTROL
+
+2. TODO 2 - BROKEN ACCESS CONTROL
 Bad filter: http://localhost:3000/api/note/1
-TODO 3 - FIXING VALIDATION
+
+3. TODO 3 - FIXING VALIDATION
 adding library zod to the database
 
 # Kegiatan 3 - Application Security Testing
@@ -78,8 +80,8 @@ Contoh tools VA:
 - Code Review: SonarQube, Coderabbit
 
 list kegiatan: 
-TODO 1 - Install Zap (Open Source VA Scanner)
-TODO 2 - Automatic Scan
-TODO 3 - Mencoba betulkan
+1. TODO 1 - Install Zap (Open Source VA Scanner)
+2. TODO 2 - Automatic Scan
+3. TODO 3 - Mencoba betulkan
 
 
