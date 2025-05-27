@@ -1,9 +1,17 @@
 "use client";
 import React, { use } from "react";
-import { Calendar, Clock, Edit3, Share2, Bookmark } from "lucide-react";
+import {
+  Calendar,
+  Clock,
+  Edit3,
+  Share2,
+  Bookmark,
+  ArrowLeft,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCurrentNote } from "@/hooks/useCurrentNote";
 import { getHumanReadableDate } from "@/utils/date_util";
+import Link from "next/link";
 
 const NoteDetail = ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = use(params);
@@ -17,6 +25,10 @@ const NoteDetail = ({ params }: { params: Promise<{ id: string }> }) => {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-blue-950">
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Header */}
+        <Link href="/dashboard" className="flex items-center mb-6">
+          <ArrowLeft className="h-4 w-4 mr-2" />
+          Back
+        </Link>
         <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 p-6 mb-6">
           <div className="flex items-start justify-between mb-4">
             <div className="flex-1">
@@ -32,13 +44,6 @@ const NoteDetail = ({ params }: { params: Promise<{ id: string }> }) => {
                 <Edit3 className="h-4 w-4 mr-2" />
                 Edit
               </Button>
-              <Button variant="outline" size="sm">
-                <Share2 className="h-4 w-4 mr-2" />
-                Share
-              </Button>
-              <Button variant="outline" size="sm">
-                <Bookmark className="h-4 w-4" />
-              </Button>
             </div>
           </div>
           {/* Meta information */}
@@ -46,7 +51,7 @@ const NoteDetail = ({ params }: { params: Promise<{ id: string }> }) => {
             <div className="flex items-center gap-1">
               <Calendar className="h-4 w-4" />
               <span>
-                Dibuat - {" "}
+                Dibuat -{" "}
                 {getHumanReadableDate(
                   new Date(currentNote.created_at as string)
                 )}
@@ -55,7 +60,7 @@ const NoteDetail = ({ params }: { params: Promise<{ id: string }> }) => {
             <div className="flex items-center gap-1">
               <Clock className="h-4 w-4" />
               <span>
-                Diupdate - {" "}
+                Diupdate -{" "}
                 {getHumanReadableDate(
                   new Date(currentNote.updated_at as string)
                 )}

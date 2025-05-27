@@ -45,6 +45,8 @@ TODO:
 
 Kekurangan enkripsi adalah masalah saat aplikasi tidak menggunakan enkripsi yang aman untuk data sensitif. Misalnya: password yang disimpan di database tidak dienkripsi.
 
+- [ ] Peserta dapat melihat password yang telah di-hash di dalam database
+
 
 
 

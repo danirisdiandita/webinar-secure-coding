@@ -228,6 +228,7 @@ export default function SignUpPage() {
               <Button
                 variant="outline"
                 className="w-full"
+                disabled
                 onClick={() => signIn("google", { redirectTo: "/dashboard" })}
               >
                 <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">

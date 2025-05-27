@@ -20,27 +20,44 @@ export const GET = async (req: Request, { params }: { params: Promise<{ id: stri
     }
 
 
-    // TODO 1 - FIXING BROKEN ACCESS CONTROL 
+    // TODO 1 - FIXING SQL INJECTION
+    // Unsafe Query
+    const noteUnsafe: [{
+        id: number;
+        title: string;
+        description: string;
+        content: string;
+        created_at: Date;
+        updated_at: Date;
+    }] = await prisma.$queryRawUnsafe(`select 
+        id, title, description, content, created_at, updated_at 
+        from public.note where id = ${id} and user_id = ${user_.id}`)
 
-    const note_ = await prisma.note.findFirst({
-        where: {
-            id: Number(id)
-        },
-        select: {
-            id: true,
-            title: true,
-            description: true,
-            content: true,
-            created_at: true,
-            updated_at: true,
-        }
-    })
-
-    if (!note_) {
+    if (!noteUnsafe) {
         return new Response(JSON.stringify({ message: "Note not found" }), { status: 404 })
     }
 
-    return new Response(JSON.stringify({message: "Note fetched successfully", data: note_}))
+    // TODO 2 - FIXING BROKEN ACCESS CONTROL 
+
+    // const note_ = await prisma.note.findFirst({
+    //     where: {
+    //         id: Number(id)
+    //     },
+    //     select: {
+    //         id: true,
+    //         title: true,
+    //         description: true,
+    //         content: true,
+    //         created_at: true,
+    //         updated_at: true,
+    //     }
+    // })
+
+    // if (!note_) {
+    //     return new Response(JSON.stringify({ message: "Note not found" }), { status: 404 })
+    // }
+
+    return new Response(JSON.stringify({ message: "Note fetched successfully", data: noteUnsafe[0] }))
 }
 
 
@@ -80,5 +97,5 @@ export const PUT = async (req: Request, { params }: { params: Promise<{ id: stri
         return new Response(JSON.stringify({ message: "Note not found" }), { status: 404 })
     }
 
-    return new Response(JSON.stringify(note_))  
+    return new Response(JSON.stringify(note_))
 }
