@@ -30,19 +30,9 @@ A10:2021 - Server-Side Request Forgery (SSRF) * *(New)*
 
 
 
+# Kegiatan 1 - Secure Coding Pada Authentikasi
 
-# Kegiatan 1: 
-
-1. Buat dua akun email dan password, contoh: 
-
-- user 1: 
-email: dani@widyasecurity.com - password: <diisi> (password generator)
-
-- user 2: 
-email: fatah@widyasecurity.com - password: <diisi> (password generator)
-
-
-2. Best Practices
+Best Practices mengacu pada OWASP Top 10 
 
 | Praktik                                      | Deskripsi                                                                 | Related OWASP Top 10 Risk                                       |
 |---------------------------------------------|---------------------------------------------------------------------------|------------------------------------------------------------------|
@@ -59,26 +49,37 @@ email: fatah@widyasecurity.com - password: <diisi> (password generator)
 | Log dan pantau aktivitas otentikasi         | Deteksi dan tanggapi aktivitas mencurigakan                              | A09:2021 - Kegagalan Logging dan Monitoring Keamanan             |
 | Perbarui library otentikasi                 | Cegah kerentanan yang diketahui pada dependensi                          | A06:2021 - Komponen Rentan dan Usang                             |
 
+1. Buat dua akun email dan password, contoh:
+→ dani@widyasecurity.com - password: <diisi> (password generator)
+→ fatah@widyasecurity.com - password: <diisi> (password generator)
+2. Pengenalan best practice authentication: 
+→ Hashed password
+→ Encryption key / Kunci enkripsi
+→ use well-maintained authentication library (Open Source: Next Auth and Enterprise grade: clerk, Auth0, Firebase Authentication)
+3. Jangan percaya input user
+→ gunakan validasi pada setiap masukan user
+→ gunakan validator dengan library yang well-maintained (zod)
 
+# Kegiatan 2 - Contoh Kerentanan Sederhana
 
-# Demo 1 - A01:2021 - Broken Access Control  
+TODO 1 - SQL INJECTION
+Unsafe query:  http://localhost:3000/api/note/1%20--
+TODO 2 - BROKEN ACCESS CONTROL
+Bad filter: http://localhost:3000/api/note/1
+TODO 3 - FIXING VALIDATION
+adding library zod to the database
 
-Kerusakan kontrol akses adalah masalah saat aplikasi tidak bisa mengatur dengan baik apa yang boleh dan tidak boleh dilakukan oleh pengguna yang sudah masuk. Misalnya: user A bisa melihat data user B.
+# Kegiatan 3 - Application Security Testing
 
+Contoh tools VA: 
+- VA Scanner: Zap Proxy, Burp Suite, Nessus, 
+- Chrome Extension: Retirejs 
+- All in one: Snyk 
+- Code Review: SonarQube, Coderabbit
 
-TODO: 
-- [ ] Buat dua akun user Fatah dan Dani dengan email fatah@example.com dan dani@example.com dengan password 12345678 
-- [ ] Login sebagai user Fatah dan buat satu note 
-- [ ] Login sebagai user Dani dan lihat note user Fatah 
-- [ ] Login sebagai user Fatah dan lihat note user Dani 
-- [ ] Lakukan secure coding dengan memperbaiki security bug yang ada 
-
-
-# Demo 2 - A02:2021 - Cryptographic Failures
-
-Kekurangan enkripsi adalah masalah saat aplikasi tidak menggunakan enkripsi yang aman untuk data sensitif. Misalnya: password yang disimpan di database tidak dienkripsi.
-
-
-
+list kegiatan: 
+TODO 1 - Install Zap (Open Source VA Scanner)
+TODO 2 - Automatic Scan
+TODO 3 - Mencoba betulkan
 
 

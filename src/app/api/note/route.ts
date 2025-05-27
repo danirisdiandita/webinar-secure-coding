@@ -23,6 +23,7 @@ export const GET = async () => {
     });
   }
 
+  // Safe Query
   const notes = await prisma.note.findMany({
     where: {
       user_id: user_.id,
