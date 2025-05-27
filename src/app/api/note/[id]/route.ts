@@ -1,8 +1,23 @@
 import { prisma } from "@/lib/prisma"
 import { auth } from "../../../../../auth"
+// import { z } from "zod"
+
 
 export const GET = async (req: Request, { params }: { params: Promise<{ id: string }> }) => {
     const { id } = await params;
+
+
+    // TO DO 3 - FIXING VALIDATION
+    // const idSchema = z.string().refine(val => !isNaN(Number(val)), {
+    //     message: "ID must be a valid number string"
+    // });
+
+    // try {
+    //     idSchema.parse(id);
+    // } catch (error) {
+    //     return new Response(JSON.stringify({ message: "Invalid ID format", error }), { status: 400 });
+    // }
+
     const session = await auth()
 
     if (!session?.user?.email) {
